@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            background-color: aquamarine;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        
+        .cajasInput{
+            max-width:10rem;
+            border-radius: 10%;
+        }
+
+        form{
+            max-width: 100%;
+            border: 0.2rem solid rgb(66, 119, 78);
+        }
+
+        label{
+            margin-top:1rem;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            border:1px solid black;
+            text-align: center;
+            align-items: center;   
+        }
+         
+        #radioContainer label{
+            margin-right: 1rem;
+        }
+
+        .tiposDeText{
+            padding:0.5rem;
+            display: flex;
+            flex-direction: column;
+            border:solid 0.2rem rgb(87, 221, 87);
+        }
+
+        .numbers{
+            display:flex;
+            flex-direction: column;
+            border:solid 0.2rem rgb(92, 209, 92);
+        }
+
+        .files-container{
+            display:flex;
+            flex-direction: column;
+            border:solid 0.2rem rgb(92, 209, 92);
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Tipos de input</h1>
+    <form> 
+        <div class="container">
+            <h2>Caja de texto</h2>
+
+            <div class="tiposDeText">
+                <h3>Tipos de caja de texto</h3>
+                <label for="nombre">Caja de texto normal</label>
+                <input type="text" name="nombre" id="nombre" class="cajasInput">
+                <label for="displayer">Caja de solo lectura</label>
+                <input type="text" name="numeroDisplayer" id="displayer" class="cajasInput" value="0" readonly>
+                <label for="cajaDesabilitada">Caja cajaDeshabilitada</label>
+                <input type="text" name="cajaDeshabilitada" id="cajaDeshabilitada" value="caja deshabilitada" disabled>
+                <label for="cajaRestringidaNumChar">Caja con restriccion de numero de caracteres</label>
+                <input type="text" name="cajaRestringidaNumChar" id="cajaRestringidaNumChar" maxlength="4">
+                <label for="patrones">Caja de texto normal pero con una expresion regular para validar patrones</label>
+                <input type="text" name="patrones" id="patrones" pattern="\d{3,8}-[\d|kK]{1}">
+                <label for="mantener">un place holder</label>
+                <input type="text" name="mantener" id="mantener" placeholder="ingresa tu nombre">
+                <label for="requerido">valida que el campo no este vacio</label>
+                <input type="text" name="requerido" id="requerido" required>
+            </div>
+
+            <h2>Correo</h2>
+            <label for="imail">Correo</label>
+            <input type="email" name="imail" id="imail" class="cajasInput">
+
+            <h2>password</h2>
+            <label for="contraseña">Contraseña</label>
+            <input type="password" name="contraseña" id="contraseña" class="cajasInput">
+
+            <h2>busqueda/Search</h2>
+            <input type="search" name="busqueda" id="busqueda">
+
+            <h2>Tel/Telefono</h2>
+            <input type="tel" name="telefono" id="telefono">
+
+            <h2>URL/direccion web</h2>
+            <input type="url" name="web" id="web">
+
+            <input type="reset" value="Resetear">
+            <input type="submit" value="submit">
+
+            <div id="radioContainer">
+                <input type="radio" name="color" id="red" value="red" class="radioColor">
+                <label for="red">Rojo</label>
+                <input type="radio" name="color" id="green" value="green" class="radioColor">
+                <label for="green">verde</label>
+            </div>
+
+            <div id="checkContainer">
+                <input type="checkbox" name="colorcheck" id="redCheck" value="red" class="checkoColor">
+                <label for="redCheck">Rojo</label>
+                <input type="checkbox" name="color" id="greenCheck" value="green" class="checkColor">
+                <label for="greenCheck">verde</label>
+            </div>
+
+            <h2>Botones</h2>
+            <input type="button" value="1" id="boton1">
+            <input type="button" value="2">
+            <input type="button" value="3">
+
+            <h2>Color</h2>
+            <input type="color" name="color" id="colorText">
+
+            <h2>Date/fecha</h2>
+            <input type="date" name="fecha" id="fecha">
+
+            <h2>dateTima-local/fecha y hora</h2>
+            <input type="datetime-local" name="fechaHora" id="fechaHora">
+
+            <h2>Time/hora</h2>
+            <input type="time" name="hora" id="hora">
+
+            <h2>Fichero/archivo</h2>
+
+            <div class="files-container">
+            <h3>archivo unico</h3>
+            <input type="file" name="archivo" id="archivo">
+            <h3>multiples archivos</h3>
+            <input type="file" name="archivos" id="archivos" multiple>
+            </div>
+
+
+            <h2>mes</h2>
+            <input type="month" name="Mes" id="Mes">
+
+            <h2>Numero</h2>
+                <div class="numbers">
+                <input type="number" name="numero" id="numero">
+                <h3>number con maximo y minimo</h3>
+                <input type="number" name="numRestrict" id="numRestrict" max="10" min="0">
+            </div>
+
+            <h2>Week/semana</h2>
+            <input type="week" name="semana" id="semana">
+
+            <h2>Rango</h2>
+            <input type="range" name="rango" id="rango" min="0" max="100">
+
+        </div>
+    </form>
+    </form>
+
+    <script>
+
+        const input = document.querySelector('#nombre');
+        const boton1 = document.querySelector('#boton1')
+        console.log(input);
+
+        boton1.addEventListener('click', () =>{
+
+            const cajaReadOnly = document.querySelector('#displayer');
+            cajaReadOnly.value = boton1.value;
+
+        });
+
+        input.addEventListener('blur', ()=>{
+            console.log('cambiando');
+            input.style.border = 'solid 1px blue'
+        });
+
+    </script>
+</body>
+</html>
